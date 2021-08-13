@@ -29,3 +29,37 @@ if __name__ == "__main__":
     data = r.json()
 
 print(data)
+
+# file = open("Spotify Data.txt", "a")
+# file.write(str(data))
+# file.close()
+
+song_title = []
+artist = []
+release_date = []
+played_date = []
+timestamp = []
+
+for song in data["items"]:
+    song_title.append(song["track"]["name"])
+    artist.append(song["track"]["artists"][0]["name"])
+    release_date.append(song["track"]["album"]["release_date"]) #YYYY-MM-DD
+    played_date.append(song["played_at"])
+    timestamp.append(song["played_at"][0:10])
+
+print("Song title array:", song_title)
+
+#Convert dictionary into a pandas dataframe
+
+song_dict = {
+    "song_title": song_title,
+    "artist_name": artist,
+    "release_date": release_date,
+    "played_at": played_date,
+    "timestamp": timestamp
+}
+dict_columns = ["song_title", "artist_name", "release_date", "played_at", "timestamp"]
+
+song_df = pd.DataFrame(song_dict, columns = dict_columns)
+
+print(song_df)
