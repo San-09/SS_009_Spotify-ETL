@@ -14,7 +14,8 @@ pd.set_option('display.max_columns', 5)
 
 
 User_id = "Santheep Sritharan"
-token = "BQCu6GEchEd6XeKUByvh2ZsrZ_jZqICGQeWG6LM-hmsAnPn5fRYheYpwyxHiE8sdsSqhqPoL2aJQYH_VThMi3N02OUfqQ0XtW3znFGYakp4ulAW8hknVf3AIqVa-xVg7wzh1gAVtyF7G-GeICb-SvX7EorZdGHnrezhvk2gv"
+#Get token from: https://developer.spotify.com/console/get-recently-played/?limit=10&after=1484811043508&before=
+token = "BQBDIkF5iDRTekKWRPAHb5AGGRXrxSSO2nIRSUKI0ONWl0A4VXLnDhP3PVpHeL7LCl_Pac8NdePz59PwBxzeQGWPvKFetN8uQisvKkUSV-d1WNq_ncYiz8cQ0O1hL1gGUik-l0Wq1onkyup_bo6HFOPDGCbQVqpgE1bZxxjZ"
 
 def validate_data(df: pd.DataFrame) -> bool:
     #Check if dataframe is empty
@@ -103,25 +104,7 @@ song_df = pd.DataFrame(song_dict, columns = dict_columns)
 if validate_data(song_df):
     print("Data valid")
 
-# Load data to the database
-# engine = sqlalchemy.create_engine(Mysql_url)    #Create a new engine instance
-# conn = sql
-#
-# def CONNECT_TO_DB():
-#     try:
-#         cnx = mysql.connector.connect(user='root', password='xxxxx',
-#                               host='localhost',
-#                               database='spotify')
-#     except mysql.connector.Error as err:
-#         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#             print("Something is wrong with your user name or password")
-#         elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#             print("Database does not exist")
-#         else:
-#             print(err)
-#     else:
-#         cnx.close()
-
+#MYSQL-Python documentation: https://dev.mysql.com/doc/connector-python/en/connector-python-example-ddl.html
 
 TABLES = {}
 TABLES['spotify_playlist'] = (
